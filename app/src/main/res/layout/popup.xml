@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/holo_green_dark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Root Note"
+        android:id="@+id/textView"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/confirmbutton" />
+
+    <Spinner
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnote"
+        android:layout_marginTop="28dp"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Type of Chord"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/spinnote"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:id="@+id/confirmbutton"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Major"
+            android:id="@+id/radMajor"
+            android:checked="true"
+            android:layout_marginTop="24dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:onClick="onRadioButtonClicked"/>/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minor"
+            android:id="@+id/radMinor"
+            android:checked="false"
+            android:layout_marginTop="32dp"
+            android:layout_below="@+id/radMajor"
+            android:layout_alignStart="@+id/radMajor"
+            android:onClick="onRadioButtonClicked"/>/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dominant 7th"
+            android:id="@+id/radV7"
+            android:checked="false"
+            android:layout_marginTop="27dp"
+            android:layout_below="@+id/radMinor"
+            android:layout_alignStart="@+id/radMinor"
+            android:onClick="onRadioButtonClicked"/>/>
+    </RadioGroup>
+
+</RelativeLayout>

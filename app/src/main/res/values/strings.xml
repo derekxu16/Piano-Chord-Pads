@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Piano Chord Pads</string>
+    <string-array name="Root">
+        <item>C</item>
+        <item>C#</item>
+        <item>D</item>
+        <item>D#</item>
+        <item>E</item>
+        <item>F</item>
+        <item>F#</item>
+        <item>G</item>
+        <item>G#</item>
+        <item>A</item>
+        <item>A#</item>
+        <item>B</item>
+
+    </string-array>
+    
+</resources>
