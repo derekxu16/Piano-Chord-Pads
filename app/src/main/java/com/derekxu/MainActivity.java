@@ -1,15 +1,20 @@
-package com.example.derek.pianochordpads;
+package com.derekxu;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.SoundPool;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.derekxu.pianochordpads.R;
 
 //Derek Xu 2016
 
@@ -67,82 +72,164 @@ public class MainActivity extends AppCompatActivity {
 
 //This will check if a button is pressed and determine the correct action
     public void listenButtons() {
+        pad1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        if (edit == true) {
+                            sentFromPad = 1;
+                            startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
+                        } else {
+                            playsounds[0] = padsounds.play(p1n1, 1, 1, 1, 0, 1);
+                            playsounds[1] = padsounds.play(p1n2, 1, 1, 1, 0, 1);
+                            playsounds[2] = padsounds.play(p1n3, 1, 1, 1, 0, 1);
+                            playsounds[3] = padsounds.play(p1n4, 1, 1, 1, 0, 1);
+                        }
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                                padsounds.stop(playsounds[0]);
+                                padsounds.stop(playsounds[1]);
+                                padsounds.stop(playsounds[2]);
+                                padsounds.stop(playsounds[3]);
+                        return false; // if you want to handle the touch event
+                }
+                return false;
+            }
+        });
+
         pad1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (edit == true) {
-                    sentFromPad = 1;
-                    startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
-                } else {
-                    playsounds[0] = padsounds.play(p1n1, 1, 1, 1, 0, 1);
-                    playsounds[1] = padsounds.play(p1n2, 1, 1, 1, 0, 1);
-                    playsounds[2] = padsounds.play(p1n3, 1, 1, 1, 0, 1);
-                    playsounds[3] = padsounds.play(p1n4, 1, 1, 1, 0, 1);
-                }
             }
         });
-        pad2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (edit == true) {
-                    sentFromPad = 2;
-                    startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
-                } else {
-                    playsounds[4] = padsounds.play(p2n1, 1, 1, 1, 0, 1);
-                    playsounds[5] = padsounds.play(p2n2, 1, 1, 1, 0, 1);
-                    playsounds[6] = padsounds.play(p2n3, 1, 1, 1, 0, 1);
-                    playsounds[7] = padsounds.play(p2n4, 1, 1, 1, 0, 1);
+
+        pad2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        if (edit == true) {
+                            sentFromPad = 2;
+                            startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
+                        } else {
+                            playsounds[4] = padsounds.play(p2n1, 1, 1, 1, 0, 1);
+                            playsounds[5] = padsounds.play(p2n2, 1, 1, 1, 0, 1);
+                            playsounds[6] = padsounds.play(p2n3, 1, 1, 1, 0, 1);
+                            playsounds[7] = padsounds.play(p2n4, 1, 1, 1, 0, 1);
+                        }
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        padsounds.stop(playsounds[4]);
+                        padsounds.stop(playsounds[5]);
+                        padsounds.stop(playsounds[6]);
+                        padsounds.stop(playsounds[7]);
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        pad3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (edit == true) {
-                    sentFromPad = 3;
-                    startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
-                } else {
-                    padsounds.play(p3n1, 1, 1, 1, 0, 1);
-                    padsounds.play(p3n2, 1, 1, 1, 0, 1);
-                    padsounds.play(p3n3, 1, 1, 1, 0, 1);
-                    padsounds.play(p3n4, 1, 1, 1, 0, 1);
+
+        pad3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        if (edit == true) {
+                            sentFromPad = 3;
+                            startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
+                        } else {
+                            playsounds[8] = padsounds.play(p3n1, 1, 1, 1, 0, 1);
+                            playsounds[9] = padsounds.play(p3n2, 1, 1, 1, 0, 1);
+                            playsounds[10] = padsounds.play(p3n3, 1, 1, 1, 0, 1);
+                            playsounds[11] = padsounds.play(p3n4, 1, 1, 1, 0, 1);
+                        }
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        padsounds.stop(playsounds[8]);
+                        padsounds.stop(playsounds[9]);
+                        padsounds.stop(playsounds[10]);
+                        padsounds.stop(playsounds[11]);
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        pad4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (edit == true) {
-                    sentFromPad = 4;
-                    startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
-                } else {
-                    padsounds.play(p4n1, 1, 1, 1, 0, 1);
-                    padsounds.play(p4n2, 1, 1, 1, 0, 1);
-                    padsounds.play(p4n3, 1, 1, 1, 0, 1);
-                    padsounds.play(p4n4, 1, 1, 1, 0, 1);
+
+        pad4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        if (edit == true) {
+                            sentFromPad = 4;
+                            startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
+                        } else {
+                            playsounds[12] = padsounds.play(p4n1, 1, 1, 1, 0, 1);
+                            playsounds[13] = padsounds.play(p4n2, 1, 1, 1, 0, 1);
+                            playsounds[14] = padsounds.play(p4n3, 1, 1, 1, 0, 1);
+                            playsounds[15] = padsounds.play(p4n4, 1, 1, 1, 0, 1);
+                        }
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        padsounds.stop(playsounds[12]);
+                        padsounds.stop(playsounds[13]);
+                        padsounds.stop(playsounds[14]);
+                        padsounds.stop(playsounds[15]);
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        pad5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (edit == true) {
-                    sentFromPad = 5;
-                    startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
-                } else {
-                    padsounds.play(p5n1, 1, 1, 1, 0, 1);
-                    padsounds.play(p5n2, 1, 1, 1, 0, 1);
-                    padsounds.play(p5n3, 1, 1, 1, 0, 1);
-                    padsounds.play(p5n4, 1, 1, 1, 0, 1);
+
+        pad5.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        if (edit == true) {
+                            sentFromPad = 5;
+                            startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
+                        } else {
+                            playsounds[16] = padsounds.play(p5n1, 1, 1, 1, 0, 1);
+                            playsounds[17] = padsounds.play(p5n2, 1, 1, 1, 0, 1);
+                            playsounds[18] = padsounds.play(p5n3, 1, 1, 1, 0, 1);
+                            playsounds[19] = padsounds.play(p5n4, 1, 1, 1, 0, 1);
+                        }
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        padsounds.stop(playsounds[16]);
+                        padsounds.stop(playsounds[17]);
+                        padsounds.stop(playsounds[18]);
+                        padsounds.stop(playsounds[19]);
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
-        pad6.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if (edit == true) {
-                    sentFromPad = 6;
-                    startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
-                } else {
-                    padsounds.play(p6n1, 1, 1, 1, 0, 1);
-                    padsounds.play(p6n2, 1, 1, 1, 0, 1);
-                    padsounds.play(p6n3, 1, 1, 1, 0, 1);
-                    padsounds.play(p6n4, 1, 1, 1, 0, 1);
+
+        pad6.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        if (edit == true) {
+                            sentFromPad = 6;
+                            startActivityForResult(new Intent(getApplicationContext(), Pop.class), 122);
+                        } else {
+                            playsounds[20] = padsounds.play(p6n1, 1, 1, 1, 0, 1);
+                            playsounds[21] = padsounds.play(p6n2, 1, 1, 1, 0, 1);
+                            playsounds[22] = padsounds.play(p6n3, 1, 1, 1, 0, 1);
+                            playsounds[23] = padsounds.play(p6n4, 1, 1, 1, 0, 1);
+                        }
+                        return false; // if you want to handle the touch event
+                    case MotionEvent.ACTION_UP:
+                        padsounds.stop(playsounds[20]);
+                        padsounds.stop(playsounds[21]);
+                        padsounds.stop(playsounds[22]);
+                        padsounds.stop(playsounds[23]);
+                        return false; // if you want to handle the touch event
                 }
+                return false;
             }
         });
     }
@@ -186,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
     public void setChordstoPad (int pad) {
         switch (pad) {
             case 1:
+                padsounds.unload(p1n4);
                 pad1.setText(padnotes[0] + getchordtext(padtype[0]));
                 Chordnotes(intfromNotes(padnotes[0]),padtype[0]);
                 p1n1 = padsounds.load(this, note1, 1);
@@ -196,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
+                padsounds.unload(p2n4);
                 pad2.setText(padnotes[1] + getchordtext(padtype[1]));
                 Chordnotes(intfromNotes(padnotes[1]),padtype[1]);
                 p2n1 = padsounds.load(this, note1, 1);
@@ -206,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 3:
+                padsounds.unload(p3n4);
                 pad3.setText(padnotes[2] + getchordtext(padtype[2]));
                 Chordnotes(intfromNotes(padnotes[2]),padtype[2]);
                 p3n1 = padsounds.load(this, note1, 1);
@@ -216,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 4:
+                padsounds.unload(p4n4);
                 pad4.setText(padnotes[3] + getchordtext(padtype[3]));
                 Chordnotes(intfromNotes(padnotes[3]),padtype[3]);
                 p4n1 = padsounds.load(this, note1, 1);
@@ -226,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 5:
+                padsounds.unload(p5n4);
                 pad5.setText(padnotes[4] + getchordtext(padtype[4]));
                 Chordnotes(intfromNotes(padnotes[4]),padtype[4]);
                 p5n1 = padsounds.load(this, note1, 1);
@@ -236,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 6:
+                padsounds.unload(p6n4);
                 pad6.setText(padnotes[5] + getchordtext(padtype[5]));
                 Chordnotes(intfromNotes(padnotes[5]),padtype[5]);
                 p6n1 = padsounds.load(this, note1, 1);

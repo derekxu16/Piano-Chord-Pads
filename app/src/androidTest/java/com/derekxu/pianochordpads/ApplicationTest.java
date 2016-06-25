@@ -1,4 +1,4 @@
-package com.example.derek.pianochordpads;
+package com.derekxu.pianochordpads;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

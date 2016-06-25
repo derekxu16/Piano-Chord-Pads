@@ -1,4 +1,4 @@
-package com.example.derek.pianochordpads;
+package com.derekxu.pianochordpads;
 
 import org.junit.Test;
 

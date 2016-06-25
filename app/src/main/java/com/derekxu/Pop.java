@@ -1,8 +1,6 @@
-package com.example.derek.pianochordpads;
+package com.derekxu;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -10,11 +8,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.derekxu.pianochordpads.R;
 
 /**
  * Created by Derek on 2016-06-11.
@@ -22,7 +20,7 @@ import android.widget.Toast;
 public class Pop extends Activity implements AdapterView.OnItemSelectedListener{
     Spinner spinner;
     TextView note;
-    String chordType;
+    String chordType = "maj";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
